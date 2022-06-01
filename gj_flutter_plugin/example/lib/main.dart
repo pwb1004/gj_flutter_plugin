@@ -3,6 +3,10 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:gj_flutter_plugin/gj_flutter_plugin.dart';
+import 'package:gj_flutter_plugin/view/controller/general_input_controller.dart';
+import 'package:gj_flutter_plugin/view/remark_view_item/remark_view_item.dart';
+import 'package:gj_flutter_plugin/view/search_view/vp_search_view.dart';
+import 'package:gj_flutter_plugin/view/separator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +22,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
   final _gjFlutterPlugin = GjFlutterPlugin();
+
+  final GeneralInputController _inputController = GeneralInputController();
 
   @override
   void initState() {
@@ -54,9 +60,12 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
-        ),
+        body: Column(children: [
+          SizedBox(height: 60,),
+          Separator(),
+          VPSearchView(),
+          RemarkViewItem(_inputController, title: '备注', required: true,),
+        ],),
       ),
     );
   }
