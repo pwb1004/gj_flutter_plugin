@@ -43,7 +43,8 @@ class _VPSearchViewState extends State<VPSearchView> {
                 placeholder: widget.placeholder,
                 controller: textController,
                 onSubmitted: (value) => goSearch(),
-                style: const TextStyle(color: Color(0xFF000000), fontSize: 14.0),
+                style:
+                    const TextStyle(color: Color(0xFF000000), fontSize: 14.0),
               )),
               TextButton(
                   onPressed: () {

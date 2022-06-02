@@ -5,7 +5,6 @@ class BaseController {
 
   BaseController({this.onChanged}) : super();
 
-
   static void controllerOnChanged(BaseController controller) {
     if (controller.onChanged != null) {
       controller.onChanged!();

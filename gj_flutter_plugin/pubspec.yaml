@@ -1,6 +1,6 @@
 name: gj_flutter_plugin
 description: Guo Jiu Big Data Flutter Plugin
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/pwb1004/gj_flutter_plugin
 
 environment:
@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
+  badges: ^2.0.2
 
 dev_dependencies:
   flutter_test:
