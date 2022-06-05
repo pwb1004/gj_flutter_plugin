@@ -36,7 +36,7 @@ class _GeneralInputItemState extends State<GeneralInputItem> {
     super.initState();
 
     widget.inputController.onChanged = onValueChanged;
-    textController.text = widget.inputController.subtitle!;
+    textController.text = widget.inputController.subtitle ?? '';
   }
 
   @override
@@ -65,7 +65,7 @@ class _GeneralInputItemState extends State<GeneralInputItem> {
               ),
               Text(
                 "${widget.title}",
-                style: TextStyle(fontSize: 14, color: Color(0xff000000)),
+                style: const TextStyle(fontSize: 14, color: Color(0xff000000)),
               ),
               const SizedBox(
                 width: 12,
@@ -114,7 +114,7 @@ class _GeneralInputItemState extends State<GeneralInputItem> {
   }
 
   onValueChanged() {
-    textController.text = widget.inputController.subtitle!;
+    textController.text = widget.inputController.subtitle ?? '';
     if (mounted) {
       setState(() {});
     }
