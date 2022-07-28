@@ -1,3 +1,15 @@
+## 1.0.6
+
+* add placeholder in controller
+
+## 1.0.5
+
+* fix more dart warnings
+
+## 1.0.4
+
+* fix some dart warnings 
+
 ## 1.0.3
 
 * bug fix

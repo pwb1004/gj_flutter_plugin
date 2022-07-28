@@ -40,7 +40,7 @@ class GeneralCellItem extends StatelessWidget {
                     children: const [
                       Text(
                         "*",
-                        style: TextStyleMs.red_mask,
+                        style: TextStyleMs.redMask,
                       ),
                       SizedBox(
                         width: 4,
@@ -83,7 +83,9 @@ class GeneralCellItem extends StatelessWidget {
         ),
       ),
       onTap: () {
-        onTap == null ? "" : onTap!();
+        if (onTap != null) {
+          onTap!();
+        }
       },
     );
   }

@@ -1,6 +1,6 @@
 name: gj_flutter_plugin
-description: Guo Jiu Big Data Flutter Plugin
-version: 1.0.3
+description: Guo Jiu Big Data Flutter Plugin, used for create project and integration faster. These plugins are all public, packages can be used to integration and app very fast.
+version: 1.0.6
 homepage: https://github.com/pwb1004/gj_flutter_plugin
 
 environment:

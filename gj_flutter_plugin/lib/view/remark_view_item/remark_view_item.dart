@@ -16,7 +16,8 @@ class RemarkViewItem extends StatefulWidget {
       this.title = '',
       this.forDisplay = false,
       this.placeholder,
-      this.parameterKey});
+      this.parameterKey})
+      : super(key: key);
 
   @override
   _RemarkViewItemState createState() => _RemarkViewItemState();
@@ -36,33 +37,34 @@ class _RemarkViewItemState extends State<RemarkViewItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(top: 4),
       child: Column(
         children: [
           Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 12,
               ),
               Visibility(
+                visible: widget.required,
                 child: Row(
-                  children: [
+                  children: const [
                     Text(
                       "*",
-                      style: TextStyle(
-                          color: const Color(0xFFf21c0f), fontSize: 14.0),
+                      style:
+                          TextStyle(color: Color(0xFFf21c0f), fontSize: 14.0),
                     ),
                     SizedBox(
                       width: 4,
                     )
                   ],
                 ),
-                visible: widget.required,
               ),
               Text(
-                "${widget.title}",
-                style: TextStyle(fontSize: 14, color: Color(0xff000000)),
+                widget.title,
+                style: const TextStyle(fontSize: 14, color: Color(0xff000000)),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 40,
               ),
               Expanded(
@@ -71,32 +73,31 @@ class _RemarkViewItemState extends State<RemarkViewItem> {
                 maxLines: null,
                 enabled: !widget.forDisplay,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(
+                    border: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black12)),
-                    enabledBorder: OutlineInputBorder(
+                    enabledBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black12)),
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black12)),
-                    hintText: "${widget.placeholder ?? ''}",
-                    contentPadding: EdgeInsets.all(6)),
+                    hintText: widget.placeholder ?? '',
+                    contentPadding: const EdgeInsets.all(6)),
                 textAlign: TextAlign.end,
                 onChanged: (text) {
                   widget.inputController.subtitle = textController.text;
                 },
-                style: TextStyle(color: const Color(0xFF000000), fontSize: 14),
+                style: const TextStyle(color: Color(0xFF000000), fontSize: 14),
               )),
-              SizedBox(
+              const SizedBox(
                 width: 12,
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 4,
           ),
-          Separator(),
+          const Separator(),
         ],
       ),
-      margin: EdgeInsets.only(top: 4),
     );
   }
 

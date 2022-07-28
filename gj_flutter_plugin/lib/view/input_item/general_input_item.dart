@@ -22,7 +22,8 @@ class GeneralInputItem extends StatefulWidget {
       this.iconData,
       this.forDisplay = false,
       this.placeholder,
-      this.parameterKey});
+      this.parameterKey})
+      : super(key: key);
 
   @override
   _GeneralInputItemState createState() => _GeneralInputItemState();
@@ -42,6 +43,7 @@ class _GeneralInputItemState extends State<GeneralInputItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       child: Column(
         children: [
           Row(
@@ -55,7 +57,7 @@ class _GeneralInputItemState extends State<GeneralInputItem> {
                   children: const [
                     Text(
                       "*",
-                      style: TextStyleMs.red_mask,
+                      style: TextStyleMs.redMask,
                     ),
                     SizedBox(
                       width: 4,
@@ -77,7 +79,9 @@ class _GeneralInputItemState extends State<GeneralInputItem> {
                 enabled: !widget.forDisplay,
                 decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: "${widget.placeholder}"),
+                    hintText: (widget.placeholder ??
+                            widget.inputController.placeholder) ??
+                        ''),
                 textAlign: TextAlign.end,
                 style: TextStyleMs.black_14,
                 onChanged: (value) {

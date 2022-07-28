@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'dart:async';
+import 'dart:developer';
 
-import 'package:flutter/services.dart';
-import 'package:gj_flutter_plugin/gj_flutter_plugin.dart';
+import 'package:flutter/material.dart';
+
+import 'package:gj_flutter_plugin/view/cell_item/general_cell_item.dart';
 import 'package:gj_flutter_plugin/view/controller/general_input_controller.dart';
 import 'package:gj_flutter_plugin/view/remark_view_item/remark_view_item.dart';
 import 'package:gj_flutter_plugin/view/search_view/vp_search_view.dart';
@@ -20,37 +20,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-  final _gjFlutterPlugin = GjFlutterPlugin();
 
   final GeneralInputController _inputController = GeneralInputController();
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      platformVersion =
-          await _gjFlutterPlugin.getPlatformVersion() ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
   }
 
   @override
@@ -60,12 +35,27 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Column(children: [
-          SizedBox(height: 60,),
-          Separator(),
-          VPSearchView(),
-          RemarkViewItem(_inputController, title: '备注', required: true,),
-        ],),
+        body: Column(
+          children: [
+            const SizedBox(
+              height: 60,
+            ),
+            const Separator(),
+            const VPSearchView(),
+            RemarkViewItem(
+              _inputController,
+              title: '备注',
+              required: true,
+            ),
+            const GeneralCellItem(
+              title: 'cell item with no tap action',
+            ),
+            GeneralCellItem(
+              title: 'cell item with tap action',
+              onTap: () => log('cell on tapped'),
+            ),
+          ],
+        ),
       ),
     );
   }

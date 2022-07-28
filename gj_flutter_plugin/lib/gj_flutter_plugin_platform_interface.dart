@@ -14,7 +14,7 @@ abstract class GjFlutterPluginPlatform extends PlatformInterface {
   ///
   /// Defaults to [MethodChannelGjFlutterPlugin].
   static GjFlutterPluginPlatform get instance => _instance;
-  
+
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [GjFlutterPluginPlatform] when
   /// they register themselves.

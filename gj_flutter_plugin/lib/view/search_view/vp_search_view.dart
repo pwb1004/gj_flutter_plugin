@@ -12,7 +12,8 @@ class VPSearchView extends StatefulWidget {
       {Key? key,
       this.placeholder = '请输入您要搜索的信息',
       this.controller,
-      this.onSearch});
+      this.onSearch})
+      : super(key: key);
 
   @override
   _VPSearchViewState createState() => _VPSearchViewState();
@@ -32,33 +33,30 @@ class _VPSearchViewState extends State<VPSearchView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                  child: CupertinoSearchTextField(
-                backgroundColor: Colors.white,
-                placeholder: widget.placeholder,
-                controller: textController,
-                onSubmitted: (value) => goSearch(),
-                style:
-                    const TextStyle(color: Color(0xFF000000), fontSize: 14.0),
-              )),
-              TextButton(
-                  onPressed: () {
-                    goSearch();
-                  },
-                  child: const Text(
-                    "搜索",
-                    style: TextStyle(color: Color(0xFF2784FB), fontSize: 14.0),
-                  ))
-            ],
-          ),
-          const Separator()
-        ],
-      ),
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+                child: CupertinoSearchTextField(
+              backgroundColor: Colors.white,
+              placeholder: widget.placeholder,
+              controller: textController,
+              onSubmitted: (value) => goSearch(),
+              style: const TextStyle(color: Color(0xFF000000), fontSize: 14.0),
+            )),
+            TextButton(
+                onPressed: () {
+                  goSearch();
+                },
+                child: const Text(
+                  "搜索",
+                  style: TextStyle(color: Color(0xFF2784FB), fontSize: 14.0),
+                ))
+          ],
+        ),
+        const Separator()
+      ],
     );
   }
 

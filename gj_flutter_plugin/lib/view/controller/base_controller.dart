@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class BaseController {
   VoidCallback? onChanged;
 
-  BaseController({this.onChanged}) : super();
+  String? placeholder;
+
+  BaseController({this.onChanged, this.placeholder}) : super();
 
   static void controllerOnChanged(BaseController controller) {
     if (controller.onChanged != null) {

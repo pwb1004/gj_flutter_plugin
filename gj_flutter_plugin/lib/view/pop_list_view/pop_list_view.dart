@@ -10,14 +10,14 @@ class PopListView extends StatefulWidget {
   final Function(Object?)? onSelectionFinished;
   final VoidCallback? onCancel;
 
-  PopListView({
+  const PopListView({
     Key? key,
     this.list,
     this.displayKey,
     this.multiple = false,
     this.onSelectionFinished,
     this.onCancel,
-  });
+  }) : super(key: key);
 
   @override
   _PopListViewState createState() => _PopListViewState();
@@ -41,20 +41,23 @@ class _PopListViewState extends State<PopListView> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Container(
+      margin: const EdgeInsets.only(left: 20, right: 20, top: 12, bottom: 12),
       child: Column(
         children: [
           Visibility(
+            visible: widget.multiple == true,
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Expanded(
                         child: InkWell(
-                      child: Text(
+                      child: const Text(
                         '取消',
                         textAlign: TextAlign.start,
-                        style: TextStyle(
-                            color: const Color(0xFF2784FB), fontSize: 14.0),
+                        style:
+                            TextStyle(color: Color(0xFF2784FB), fontSize: 14.0),
                       ),
                       onTap: () {
                         cancel();
@@ -62,24 +65,22 @@ class _PopListViewState extends State<PopListView> {
                     )),
                     Expanded(
                         child: InkWell(
-                      child: Text('确定',
+                      child: const Text('确定',
                           textAlign: TextAlign.end,
                           style: TextStyle(
-                              color: const Color(0xFF2784FB), fontSize: 14.0)),
+                              color: Color(0xFF2784FB), fontSize: 14.0)),
                       onTap: () {
                         done();
                       },
                     )),
                   ],
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 12,
                 ),
-                Separator(),
+                const Separator(),
               ],
             ),
-            visible: widget.multiple == true,
           ),
           Expanded(
               child: ListView.builder(
@@ -90,24 +91,25 @@ class _PopListViewState extends State<PopListView> {
           ))
         ],
       ),
-      margin: EdgeInsets.only(left: 20, right: 20, top: 12, bottom: 12),
     ));
   }
 
   Widget buildItem(int index) {
     var data = displayList[index];
     Container con = Container(
+      margin: const EdgeInsets.only(top: 12),
+      alignment: Alignment.center,
       child: Column(
         children: [
           Row(
             children: [
               Visibility(
+                visible: widget.multiple == true,
                 child: Image.asset(
                   "images/icon_radio_${data['sel'] == '0' ? 'nor' : 'sel'}.png",
-                  width: 16,
-                  height: 16,
+                  width: 20,
+                  height: 20,
                 ),
-                visible: widget.multiple == true,
               ),
               Expanded(
                   child: Text(
@@ -116,14 +118,12 @@ class _PopListViewState extends State<PopListView> {
               ))
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
-          Separator(),
+          const Separator(),
         ],
       ),
-      margin: EdgeInsets.only(top: 12),
-      alignment: Alignment.center,
     );
     return InkWell(
       child: con,
@@ -152,7 +152,7 @@ class _PopListViewState extends State<PopListView> {
         selectedList.add(one);
       }
     }
-    if (selectedList.length > 0) {
+    if (selectedList.isNotEmpty) {
       if (widget.onSelectionFinished != null) {
         widget.onSelectionFinished!(selectedList);
       }
