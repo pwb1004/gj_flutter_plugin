@@ -1,3 +1,7 @@
+## 1.0.7
+
+* fix placeholder bug in controller
+
 ## 1.0.6
 
 * add placeholder in controller

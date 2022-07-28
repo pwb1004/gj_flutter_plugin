@@ -6,6 +6,6 @@ class GeneralSelectionController extends BaseController {
   String? saveKey;
 
   GeneralSelectionController(
-      {this.displayValue, this.storageValue, this.saveKey})
-      : super();
+      {this.displayValue, this.storageValue, this.saveKey, String? placeholder})
+      : super(placeholder: placeholder);
 }
