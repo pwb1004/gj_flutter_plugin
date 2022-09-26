@@ -1,6 +1,6 @@
 name: gj_flutter_plugin
-description: Guo Jiu Big Data Flutter Plugin, used for create project and integration faster. These plugins are all public, packages can be used to integration and app very fast.
-version: 1.0.7
+description: Pang Weibo Flutter Plugin, used for create project and integration faster. These plugins are all public, packages can be used to integration and app very fast.
+version: 1.0.8
 homepage: https://github.com/pwb1004/gj_flutter_plugin
 
 environment:
@@ -36,10 +36,10 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.guojiu.gj_flutter_plugin
-        pluginClass: GjFlutterPlugin
+        package: com.weibo.wb_flutter_plugin
+        pluginClass: WBFlutterPlugin
       ios:
-        pluginClass: GjFlutterPlugin
+        pluginClass: WBFlutterPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
